@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Psychic Game</title>
+    <link rel="stylesheet" type="text/javascript" src="assets/javascript/game.js">
+</head>
+
+<body>
+        <h1>The Psychic Game</h1>
+
+        <p id="Wins">Wins: 0</p>
+
+        <p id="Losses">Losses: 0</p>
+
+        <p id="Left">Guesses Left: 9</p>
+
+        <p id="Guesses">Your Guesses so far: 0</p>
+
+    <style type="text/css">
+        
+        p {font-weight: bold;
+            font-family: 'georgia';
+            color: white;
+            }
+
+        body {height: 100%;
+            width: 100%;
+        }
+         
+         html { background: url(images/psychic-lit1.jpg) no-repeat center center fixed; 
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        var options = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '_'];
+        var wins = 0;
+        var losses = 0;
+        var guesses = 0;
+        var guessesLeft = 9;
+
+        document.onkeyup = function(event) {
+            wins.textContent = event.key;
+
+
+            var userGuess = event.key;
+
+            var computerGuess = options[Math.floor(Math.random() * options.length)];
+
+
+
+
+            if (userGuess === computerGuess) {
+                wins += 1;
+
+                document.getElementById('Wins').innerHTML = 'Wins: ' + wins;
+                console.log(userGuess);
+
+            } else if (userGuess != computerGuess) {
+                guessesLeft -= 1;
+                guesses += 1;
+                document.getElementById('Guesses').innerHTML = 'Your guesses so far: ' + guesses;
+                document.getElementById('Left').innerHTML = 'Guesses left: ' + guessesLeft;
+
+            }
+
+            else (guessesLeft === 0) {
+                losses += 1;
+                guesses = 0;
+                guessesLeft = 9;
+                document.getElementById('Losses').innerHTML = 'Losses: ' + losses;
+
+
+            }
+
+
+            console.log(computerGuess);
+
+
+
+        };
+    </script>
+</body>
+
+</html>
